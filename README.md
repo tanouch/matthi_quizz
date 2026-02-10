@@ -1,99 +1,52 @@
 # 🎮 FALL QUIZ
 
-A real-time multiplayer quiz game where wrong answers make you **fall**. Players start at the top — each mistake drops you further down the cliff. Last one standing wins!
+Multiplayer quiz — wrong answers make you fall. Last one standing wins.
 
-## How It Works
+## Architecture
 
-1. **Host** creates a room → gets a 4-letter code
-2. **Friends** join with the code (up to 12 players)
-3. Host starts the game → 10 multiple-choice questions
-4. After each question, see the **falling leaderboard**: wrong answers push you down
-5. Final standings reveal the champion 🏆
+```
+frontend/          → Deploy to Netlify (static HTML)
+  index.html
+  netlify.toml
 
-## Quick Start (Local)
-
-```bash
-# Install dependencies
-npm install
-
-# Run the server
-npm start
-
-# Open http://localhost:3000
+backend/           → Deploy to Render (Node.js)
+  server.js
+  questions.json   ← Edit this to change questions!
+  package.json
 ```
 
-Your friends on the same network can join via your local IP (e.g., `http://192.168.1.42:3000`).
+## Setup
 
----
+### 1. Deploy backend on Render (free)
+1. Push the `backend/` folder to a GitHub repo
+2. Go to [render.com](https://render.com) → New → Web Service
+3. Connect repo, set:
+   - **Build command:** `npm install`
+   - **Start command:** `node server.js`
+4. Deploy → copy the URL (e.g. `https://fall-quiz-backend.onrender.com`)
 
-## Hosting Options (so friends can connect remotely)
+### 2. Deploy frontend on Netlify (free)
+1. In `frontend/index.html`, change `BACKEND_URL` to your Render URL
+2. Push `frontend/` folder to a GitHub repo (or drag-drop on Netlify)
+3. Go to [netlify.com](https://netlify.com) → Add new site → Deploy
+4. Share the Netlify URL with friends!
 
-### Option 1: Railway (Easiest — free tier)
-1. Push code to a GitHub repo
-2. Go to [railway.app](https://railway.app)
-3. Click "New Project" → "Deploy from GitHub repo"
-4. It auto-detects Node.js, deploys, and gives you a public URL
-5. Share the URL with friends!
-
-### Option 2: Render (Free tier)
-1. Push to GitHub
-2. Go to [render.com](https://render.com) → New Web Service
-3. Connect your repo
-4. Build command: `npm install`
-5. Start command: `node server.js`
-6. Done — free `.onrender.com` URL
-
-### Option 3: Fly.io
+### Local dev
 ```bash
-# Install flyctl, then:
-fly launch
-fly deploy
+cd backend && npm install && npm start
+# Then open frontend/index.html and keep BACKEND_URL as http://localhost:3000
 ```
 
-### Option 4: Docker (any VPS)
-```bash
-docker build -t fall-quiz .
-docker run -p 3000:3000 fall-quiz
-```
+## Customizing questions
 
-### Option 5: ngrok (Quick temporary sharing)
-```bash
-npm start
-# In another terminal:
-ngrok http 3000
-```
-This gives you a public URL instantly. Great for a one-time game night.
+Edit `backend/questions.json`. Each question supports 4-8 options:
 
----
-
-## Customizing Questions
-
-Edit the `QUESTIONS` array in `server.js`. Each question has:
-
-```js
+```json
 {
-  question: "Your question here?",
-  options: ["Option A", "Option B", "Option C", "Option D"],
-  answer: 0  // index of correct option (0-based)
+  "question": "Your question?",
+  "options": ["A", "B", "C", "D", "E", "F"],
+  "answer": 2
 }
 ```
 
----
-
-## Tech Stack
-
-- **Backend**: Node.js + Express + Socket.IO
-- **Frontend**: Vanilla HTML/CSS/JS (no build step needed)
-- **Real-time**: WebSockets via Socket.IO
-
-## Project Structure
-
-```
-fall-quiz/
-├── server.js          # Game logic + WebSocket server
-├── public/
-│   └── index.html     # Full UI (CSS + JS inline)
-├── package.json
-├── Dockerfile
-└── README.md
-```
+`answer` is the 0-based index of the correct option.

@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "answer": 1
+  },
+  {
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"],
+    "answer": 2
+  },
+  {
+    "question": "What is the capital of Japan?",
+    "options": ["Seoul", "Beijing", "Tokyo", "Bangkok"],
+    "answer": 2
+  },
+  {
+    "question": "Which element has the chemical symbol 'O'?",
+    "options": ["Gold", "Osmium", "Oxygen", "Oganesson"],
+    "answer": 2
+  },
+  {
+    "question": "In what year did the Titanic sink?",
+    "options": ["1905", "1912", "1920", "1898"],
+    "answer": 1
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+    "answer": 3
+  },
+  {
+    "question": "Which language has the most native speakers?",
+    "options": ["English", "Spanish", "Mandarin Chinese", "Hindi"],
+    "answer": 2
+  },
+  {
+    "question": "What gas do plants absorb from the atmosphere?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Helium"],
+    "answer": 2
+  },
+  {
+    "question": "Who wrote Romeo and Juliet?",
+    "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+    "answer": 1
+  },
+  {
+    "question": "What is the speed of light approximately?",
+    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
+    "answer": 0
+  }
+]
