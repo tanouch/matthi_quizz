@@ -43,9 +43,9 @@ function sendNextQuestion(room) {
     total: QUESTIONS.length,
     question: q.question,
     options: q.options,
-    timeLimit: 15
+    timeLimit: 8
   });
-  room.questionTimer = setTimeout(() => revealAnswer(room), 16000);
+  room.questionTimer = setTimeout(() => revealAnswer(room), 9000);
 }
 
 function revealAnswer(room) {

@@ -3,34 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fall Quiz</title>
+<title>Crocodile Fall</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0a0a0f; --surface:#14141f; --surface2:#1e1e2e;
-    --accent:#ff3e6c; --accent2:#7c3aed; --green:#10b981;
-    --red:#ef4444; --yellow:#fbbf24; --text:#e2e2ef; --dim:#6b6b80;
+    --bg:#070b0a; --surface:#0f1a16; --surface2:#162420;
+    --accent:#2dd4a0; --accent2:#10b981; --green:#10b981;
+    --red:#ef4444; --yellow:#fbbf24; --text:#e2efe8; --dim:#5a7a6e;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
-  body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 20% 50%,rgba(124,58,237,.08)0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,62,108,.06)0%,transparent 50%);z-index:-1}
+  body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 60%,rgba(16,185,129,.06)0%,transparent 50%),radial-gradient(ellipse at 70% 20%,rgba(45,212,160,.04)0%,transparent 50%);z-index:-1}
 
   .screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:24px}
   .screen.active{display:flex}
 
-  .logo{font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:-3px;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .subtitle{font-family:'Space Mono',monospace;color:var(--dim);font-size:.85rem;margin-bottom:48px;letter-spacing:2px;text-transform:uppercase}
+  .logo{font-size:clamp(2.2rem,7vw,3.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:4px;text-align:center;line-height:1.1}
+  .logo-croc{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .logo-fall{color:var(--red)}
+  .subtitle{font-family:'Space Mono',monospace;color:var(--dim);font-size:.8rem;margin-bottom:48px;letter-spacing:2px;text-transform:uppercase;text-align:center}
 
-  .card{background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:32px;width:100%;max-width:400px}
+  .card{background:var(--surface);border:1px solid rgba(45,212,160,.1);border-radius:14px;padding:32px;width:100%;max-width:400px}
   label{display:block;font-size:.75rem;font-family:'Space Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
-  input{width:100%;padding:14px 16px;background:var(--bg);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;outline:none}
-  input:focus{border-color:var(--accent2)}
+  input{width:100%;padding:14px 16px;background:var(--bg);border:1px solid rgba(45,212,160,.12);border-radius:10px;color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;outline:none}
+  input:focus{border-color:var(--accent)}
   .ig{margin-bottom:16px}
 
   .btn{width:100%;padding:16px;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s}
   .btn:active{transform:scale(.97)}
-  .btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
-  .btn-s{background:var(--surface2);color:var(--text);border:1px solid rgba(255,255,255,.08);margin-top:10px}
+  .btn-p{background:linear-gradient(135deg,var(--accent),#059669);color:#000}
+  .btn-s{background:var(--surface2);color:var(--text);border:1px solid rgba(45,212,160,.12);margin-top:10px}
   .divider{text-align:center;color:var(--dim);font-size:.8rem;margin:18px 0;font-family:'Space Mono',monospace}
   .error{color:var(--red);font-size:.85rem;margin-top:10px;text-align:center;min-height:1.2em}
 
@@ -38,66 +40,126 @@
   .room-label{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:3px;text-align:center}
 
   .player-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:32px 0;max-width:500px}
-  .chip{background:var(--surface2);border:1px solid rgba(255,255,255,.06);padding:10px 18px;border-radius:50px;font-weight:500}
+  .chip{background:var(--surface2);border:1px solid rgba(45,212,160,.1);padding:10px 18px;border-radius:50px;font-weight:500}
   .chip.host{border-color:var(--accent)}.chip.host::before{content:'👑 '}
   .wait{color:var(--dim);font-size:.85rem;animation:pulse 2s infinite}
   @keyframes pulse{50%{opacity:.5}}
 
   .q-header{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
-  .timer-bar{width:100%;max-width:500px;height:4px;background:var(--surface2);border-radius:4px;margin-bottom:32px;overflow:hidden}
+  .timer-bar{width:100%;max-width:500px;height:5px;background:var(--surface2);border-radius:4px;margin-bottom:32px;overflow:hidden}
   .timer-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red));border-radius:4px;transition:width 1s linear}
   .q-text{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;text-align:center;max-width:600px;line-height:1.4;margin-bottom:36px}
 
   .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:500px}
   @media(max-width:500px){.opts{grid-template-columns:1fr}}
-  .opt{padding:18px 20px;background:var(--surface);border:2px solid rgba(255,255,255,.06);border-radius:12px;color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;transition:all .2s;text-align:left}
-  .opt:hover:not(.dis){border-color:var(--accent2);background:var(--surface2)}
-  .opt.sel{border-color:var(--accent2);background:rgba(124,58,237,.15)}
+  .opt{padding:16px 18px;background:var(--surface);border:2px solid rgba(45,212,160,.08);border-radius:12px;color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;transition:all .2s;text-align:left}
+  .opt:hover:not(.dis){border-color:var(--accent);background:var(--surface2)}
+  .opt.sel{border-color:var(--accent);background:rgba(45,212,160,.1)}
   .opt.correct{border-color:var(--green)!important;background:rgba(16,185,129,.15)!important}
   .opt.wrong{border-color:var(--red)!important;background:rgba(239,68,68,.1)!important;opacity:.6}
   .opt.dis{pointer-events:none}
-  .ol{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;background:rgba(255,255,255,.06);font-family:'Space Mono',monospace;font-size:.75rem;margin-right:10px}
+  .ol{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;background:rgba(45,212,160,.08);font-family:'Space Mono',monospace;font-size:.75rem;margin-right:10px}
 
-  /* FALLING LEADERBOARD */
-  .st-wrap{padding:24px;width:100%;max-width:600px}
-  .st-title{font-size:1rem;font-family:'Space Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:8px}
-  .st-correct{text-align:center;font-size:1.1rem;font-weight:700;color:var(--green);margin-bottom:24px}
+  /* ─── CROC FALLING SCENE ─── */
+  .fall-wrap{padding:24px;width:100%;max-width:600px}
+  .fall-title{font-size:1rem;font-family:'Space Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:8px}
+  .fall-correct{text-align:center;font-size:1.1rem;font-weight:700;color:var(--green);margin-bottom:20px}
 
-  .cliff{position:relative;width:100%;border:1px solid rgba(255,255,255,.04);border-radius:14px;overflow:hidden}
-  .cliff-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,185,129,.08) 0%,rgba(251,191,36,.05) 50%,rgba(239,68,68,.1) 100%);pointer-events:none}
-  .cliff-inner{position:relative;z-index:1;padding:12px}
+  .croc-pit{
+    position:relative;
+    width:100%;
+    height:520px;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(45,212,160,.08);
+    background:linear-gradient(180deg,
+      rgba(16,185,129,.06) 0%,
+      rgba(45,212,160,.03) 20%,
+      rgba(251,191,36,.03) 45%,
+      rgba(239,68,68,.04) 65%,
+      rgba(239,68,68,.08) 80%,
+      #0a1510 100%);
+  }
 
-  .p-row{display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:8px;border-radius:10px;background:rgba(255,255,255,.03);position:relative;overflow:hidden;transition:all .6s cubic-bezier(.22,1,.36,1)}
-  .p-row.fell{animation:shake .5s ease}
-  @keyframes shake{20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+  /* Depth markers on the left */
+  .pit-markers{position:absolute;left:0;top:0;bottom:120px;width:100%;pointer-events:none;z-index:0}
+  .pit-mark{position:absolute;left:0;right:0;border-bottom:1px dashed rgba(45,212,160,.06);height:0}
+  .pit-mark span{position:absolute;left:6px;top:-14px;font-family:'Space Mono',monospace;font-size:.5rem;color:var(--dim);opacity:.4}
 
-  .p-depth-bar{position:absolute;left:0;top:0;bottom:0;border-radius:10px;opacity:.12;transition:width .8s ease}
-  .p-rank{font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;color:var(--dim);min-width:28px}
-  .p-avatar{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
-  .p-info{flex:1;min-width:0}
-  .p-name{font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .p-status{font-size:.75rem;font-family:'Space Mono',monospace;margin-top:2px}
-  .p-status.ok{color:var(--green)}.p-status.ko{color:var(--red)}.p-status.no{color:var(--dim)}
-  .p-score{font-family:'Space Mono',monospace;font-weight:700;font-size:1.1rem;min-width:50px;text-align:right}
+  /* Player name tags - absolutely positioned */
+  .pit-player{
+    position:absolute;
+    display:flex;align-items:center;gap:6px;
+    padding:5px 14px;border-radius:50px;
+    background:rgba(10,20,15,.85);
+    border:1px solid rgba(255,255,255,.08);
+    white-space:nowrap;font-size:.85rem;
+    z-index:2;
+    transition:top 1s cubic-bezier(.22,1,.36,1), opacity .6s;
+    backdrop-filter:blur(4px);
+  }
+  .pit-player .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .pit-player .nm{font-weight:600}
+  .pit-player .sc{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--dim);margin-left:4px}
+  .pit-player .st{font-size:.7rem;margin-left:2px}
+  .pit-player.me{border-color:var(--accent);background:rgba(10,30,20,.9)}
+  .pit-player.eaten{opacity:.3;top:calc(100% - 130px)!important}
+  .pit-player.eaten .nm{text-decoration:line-through}
+
+  /* Animate new position */
+  .pit-player.just-fell{animation:fallBounce .6s ease}
+  @keyframes fallBounce{
+    0%{transform:translateY(-20px)}
+    60%{transform:translateY(6px)}
+    100%{transform:translateY(0)}
+  }
+
+  /* The croc GIF at the bottom */
+  .croc-img-wrap{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    height:140px;
+    display:flex;align-items:flex-end;justify-content:center;
+    background:linear-gradient(180deg,transparent 0%,rgba(10,15,10,.7) 30%,rgba(5,10,5,.95) 100%);
+    z-index:1;
+    overflow:hidden;
+  }
+  .croc-img-wrap img{
+    height:130px;
+    object-fit:contain;
+    filter:brightness(1.1);
+  }
+  .croc-img-wrap .eaten-names{
+    position:absolute;
+    top:8px;left:0;right:0;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-size:.65rem;
+    color:rgba(239,68,68,.7);
+    letter-spacing:1px;
+    z-index:3;
+  }
+
+  /* Swamp water line */
+  .water-line{
+    position:absolute;bottom:110px;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,transparent,rgba(45,212,160,.15),transparent);
+    z-index:3;
+  }
 
   .next-wrap{text-align:center;margin-top:24px}
 
-  .trophy{font-size:4rem;margin-bottom:8px}
-  .winner{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--yellow),#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .wlabel{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:3px;margin-bottom:32px}
-  .fl{width:100%;max-width:400px}
-  .fr{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;margin-bottom:6px;background:var(--surface)}
-  .fr:first-child{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2)}
-  .fr-r{font-family:'Space Mono',monospace;font-weight:700;min-width:28px;color:var(--dim)}
-  .fr-n{flex:1;font-weight:600}
-  .fr-s{font-family:'Space Mono',monospace;font-weight:700}
+  .go-wrap{width:100%;max-width:600px;padding:0 16px}
+  .go-title{text-align:center;font-size:1.5rem;font-weight:900;margin-bottom:4px}
+  .go-sub{text-align:center;font-family:'Space Mono',monospace;font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
 </style>
 </head>
 <body>
 
 <div id="s-home" class="screen active">
-  <div class="logo">FALL</div>
-  <div class="subtitle">Don't hit the bottom</div>
+  <img src="/croc.gif" alt="croc" style="width:120px;border-radius:12px;margin-bottom:12px">
+  <div class="logo"><span class="logo-croc">Crocodile</span> <span class="logo-fall">Fall</span></div>
+  <div class="subtitle">Don't get eaten</div>
   <div class="card">
     <div class="ig"><label>Your Name</label><input id="i-name" placeholder="Enter your name" maxlength="16"></div>
     <button class="btn btn-p" id="b-create">Create Room</button>
@@ -109,6 +171,7 @@
 </div>
 
 <div id="s-lobby" class="screen">
+  <img src="/croc.gif" alt="croc" style="width:80px;border-radius:10px;margin-bottom:8px">
   <div class="room-label">Room Code</div>
   <div class="room-code" id="l-code"></div>
   <p style="color:var(--dim);font-size:.8rem;margin-bottom:8px">Share this code with friends</p>
@@ -125,13 +188,10 @@
 </div>
 
 <div id="s-standings" class="screen">
-  <div class="st-wrap">
-    <div class="st-title" id="st-title"></div>
-    <div class="st-correct" id="st-correct"></div>
-    <div class="cliff">
-      <div class="cliff-bg"></div>
-      <div class="cliff-inner" id="st-list"></div>
-    </div>
+  <div class="fall-wrap">
+    <div class="fall-title" id="st-title"></div>
+    <div class="fall-correct" id="st-correct"></div>
+    <div class="croc-pit" id="pit1"></div>
     <div class="next-wrap">
       <button class="btn btn-p" id="b-next" style="max-width:300px;display:none">Next Question</button>
       <div class="wait" id="w-next" style="display:none">Next question coming…</div>
@@ -140,19 +200,23 @@
 </div>
 
 <div id="s-gameover" class="screen">
-  <div class="trophy">🏆</div>
-  <div class="winner" id="go-winner"></div>
-  <div class="wlabel">Champion</div>
-  <div class="fl" id="go-list"></div>
-  <button class="btn btn-s" id="b-replay" style="max-width:300px;margin-top:16px">Play Again</button>
+  <div class="go-wrap">
+    <div class="go-title">🐊 Final Standings</div>
+    <div class="go-sub">Who survived the crocodile?</div>
+    <div class="croc-pit" id="pit2"></div>
+    <div style="text-align:center;margin-top:20px">
+      <button class="btn btn-s" id="b-replay" style="max-width:300px">Play Again</button>
+    </div>
+  </div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-const socket = io();
-let isHost=false, myId=null, totalQ=10;
-const COLORS=['#ff3e6c','#7c3aed','#10b981','#f59e0b','#3b82f6','#ec4899','#14b8a6','#f97316','#8b5cf6','#06b6d4','#ef4444','#84cc16'];
-let colorMap={}, ci=0;
+const socket=io();
+let isHost=false,myId=null,totalQ=10;
+const DEAD_AT=8;
+const COLORS=['#2dd4a0','#f59e0b','#3b82f6','#ec4899','#8b5cf6','#f97316','#06b6d4','#84cc16','#ff3e6c','#14b8a6','#ef4444','#10b981'];
+let colorMap={},ci=0;
 function pColor(id){if(!colorMap[id])colorMap[id]=COLORS[ci++%COLORS.length];return colorMap[id]}
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('s-'+id).classList.add('active')}
 function err(m){const e=document.getElementById('err');e.textContent=m;setTimeout(()=>e.textContent='',3000)}
@@ -179,7 +243,6 @@ socket.on('players-update',players=>{
   document.getElementById('w-start').style.display=isHost?'none':'block';
 });
 document.getElementById('b-start').onclick=()=>socket.emit('start-game');
-
 socket.on('game-started',d=>{totalQ=d.totalQuestions;show('question')});
 
 socket.on('new-question',d=>{
@@ -200,55 +263,133 @@ socket.on('new-question',d=>{
 
 socket.on('answer-reveal',data=>{
   document.querySelectorAll('.opt').forEach((b,i)=>{b.classList.add('dis');b.classList.add(i===data.correctIndex?'correct':'wrong')});
-  setTimeout(()=>renderStandings(data),1200);
+  setTimeout(()=>{
+    buildPit(document.getElementById('pit1'),data.standings,data.results,data.questionIndex+1);
+    document.getElementById('st-title').textContent=`After Question ${data.questionIndex+1}`;
+    document.getElementById('st-correct').textContent=`✓ ${data.correctAnswer}`;
+    document.getElementById('b-next').style.display=isHost?'inline-block':'none';
+    document.getElementById('w-next').style.display=isHost?'none':'block';
+    show('standings');
+  },1200);
 });
 
-function renderStandings(data){
-  show('standings');
-  document.getElementById('st-title').textContent=`After Question ${data.questionIndex+1}`;
-  document.getElementById('st-correct').textContent=`✓ ${data.correctAnswer}`;
-  const list=document.getElementById('st-list');list.innerHTML='';
+// Store previous mistakes to detect who just fell
+let prevMistakes={};
 
-  data.standings.forEach((p,i)=>{
-    const mistakes=(data.questionIndex+1)-p.score;
-    const fallPct=(mistakes/data.totalQuestions)*100;
-    const color=pColor(p.id);
-    const row=document.createElement('div');row.className='p-row';
-    if(!p.correct)row.classList.add('fell');
-    row.style.marginLeft=Math.min(fallPct*0.4,50)+'px';
+function buildPit(container, standings, results, asked){
+  container.innerHTML='';
 
-    row.innerHTML=`
-      <div class="p-depth-bar" style="width:${fallPct}%;background:${color}"></div>
-      <div class="p-rank">#${i+1}</div>
-      <div class="p-avatar" style="background:${color}22;color:${color}">${p.name[0].toUpperCase()}</div>
-      <div class="p-info">
-        <div class="p-name">${p.name}${p.id===myId?' (you)':''}</div>
-        <div class="p-status ${p.correct?'ok':data.results[p.id]?.chosen!==undefined?'ko':'no'}">
-          ${p.correct?'✓ Correct':data.results[p.id]?.chosen!==undefined?'✗ Wrong':'— No answer'}
-        </div>
-      </div>
-      <div class="p-score" style="color:${color}">${p.score}/${data.questionIndex+1}</div>
-    `;
-    list.appendChild(row);
+  // Safe zone height = container height - croc area (140px)
+  // Players distributed from top:10px to bottom:150px based on mistakes
+  const safeTop=12;
+  const safeBottom=155; // above croc
+  const pitH=520;
+  const usableH=pitH-safeTop-safeBottom;
+  const stepH=usableH/DEAD_AT; // px per mistake
+
+  // Depth guide lines
+  const markers=document.createElement('div');markers.className='pit-markers';
+  for(let i=0;i<=DEAD_AT;i++){
+    const m=document.createElement('div');m.className='pit-mark';
+    m.style.top=(safeTop+i*stepH)+'px';
+    if(i>0&&i<DEAD_AT){
+      const s=document.createElement('span');
+      s.textContent=i===1?'1 miss':i+' miss';
+      m.appendChild(s);
+    }
+    markers.appendChild(m);
+  }
+  container.appendChild(markers);
+
+  // Water line above croc
+  const wl=document.createElement('div');wl.className='water-line';
+  container.appendChild(wl);
+
+  // Croc GIF at bottom
+  const crocWrap=document.createElement('div');crocWrap.className='croc-img-wrap';
+  const img=document.createElement('img');img.src='/croc.gif';img.alt='croc';
+  crocWrap.appendChild(img);
+  container.appendChild(crocWrap);
+
+  // Eaten names overlay
+  const eatenNames=[];
+
+  // Spread players horizontally to avoid overlap
+  // Group by same mistake count, offset them
+  const byMistake={};
+  standings.forEach(p=>{
+    const m=Math.min(asked-p.score, DEAD_AT);
+    if(!byMistake[m])byMistake[m]=[];
+    byMistake[m].push(p);
   });
 
-  document.getElementById('b-next').style.display=isHost?'inline-block':'none';
-  document.getElementById('w-next').style.display=isHost?'none':'block';
+  standings.forEach(p=>{
+    const mistakes=asked-p.score;
+    const capped=Math.min(mistakes, DEAD_AT);
+    const isEaten=mistakes>=DEAD_AT;
+    const isMe=p.id===myId;
+    const color=pColor(p.id);
+
+    // Horizontal spread within same mistake group
+    const group=byMistake[capped];
+    const idxInGroup=group.indexOf(p);
+    const groupLen=group.length;
+    // Center them, each ~130px wide, spread evenly
+    const slotW=Math.min(140,((container.offsetWidth||500)-40)/groupLen);
+    const totalGroupW=slotW*groupLen;
+    const startX=((container.offsetWidth||500)-totalGroupW)/2;
+    const xPos=startX+idxInGroup*slotW;
+
+    // Vertical position
+    const yPos=isEaten
+      ? pitH-135
+      : safeTop+capped*stepH;
+
+    const el=document.createElement('div');
+    el.className='pit-player'+(isMe?' me':'')+(isEaten?' eaten':'');
+
+    // Did this player just fall?
+    const prevM=prevMistakes[p.id]||0;
+    if(results && capped>prevM) el.classList.add('just-fell');
+
+    el.style.top=yPos+'px';
+    el.style.left=xPos+'px';
+
+    // Status indicator
+    let statusHtml='';
+    if(results&&results[p.id]){
+      const ok=results[p.id].correct;
+      statusHtml=`<span class="st" style="color:${ok?'var(--green)':'var(--red)'}">${ok?'✓':'✗'}</span>`;
+    }
+
+    const prefix=capped===0&&!isEaten?'👑 ':'';
+
+    el.innerHTML=`<span class="dot" style="background:${color}"></span><span class="nm">${prefix}${p.name}</span><span class="sc">${p.score}/${asked}</span>${statusHtml}`;
+    container.appendChild(el);
+
+    if(isEaten) eatenNames.push(p.name);
+  });
+
+  // Show eaten names on croc
+  if(eatenNames.length){
+    const en=document.createElement('div');en.className='eaten-names';
+    en.textContent='☠️ '+eatenNames.join(', ');
+    container.querySelector('.croc-img-wrap').appendChild(en);
+  }
+
+  // Save mistake counts for next round animation
+  standings.forEach(p=>{
+    prevMistakes[p.id]=Math.min(asked-p.score, DEAD_AT);
+  });
 }
 
 document.getElementById('b-next').onclick=()=>socket.emit('next-question');
 
 socket.on('game-over',scores=>{
   show('gameover');
-  document.getElementById('go-winner').textContent=scores[0]?.name||'???';
-  const list=document.getElementById('go-list');list.innerHTML='';
-  const medals=['🥇','🥈','🥉'];
-  scores.forEach((p,i)=>{
-    const r=document.createElement('div');r.className='fr';
-    r.innerHTML=`<div class="fr-r">${medals[i]||'#'+(i+1)}</div><div class="fr-n">${p.name}${p.id===myId?' (you)':''}</div><div class="fr-s">${p.score}/${totalQ}</div>`;
-    list.appendChild(r);
-  });
+  buildPit(document.getElementById('pit2'),scores,null,totalQ);
 });
+
 document.getElementById('b-replay').onclick=()=>{if(isHost)socket.emit('start-game')};
 </script>
 </body>
