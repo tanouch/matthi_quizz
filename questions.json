@@ -1,98 +1,127 @@
 [
   {
-    "question": "What planet is known as the Red Planet?",
-    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "question": "En quelle année la Bastille a-t-elle été prise d'assaut ?",
+    "options": ["1787", "1789", "1791", "1793"],
     "answer": 1
   },
   {
-    "question": "Who painted the Mona Lisa?",
-    "options": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"],
-    "answer": 2
+    "question": "Quel empereur français a perdu la bataille de Waterloo ?",
+    "options": ["Napoléon Ier", "Napoléon III", "Louis-Philippe", "Charles X"],
+    "answer": 0
   },
   {
-    "question": "What is the capital of Japan?",
-    "options": ["Seoul", "Beijing", "Tokyo", "Bangkok"],
-    "answer": 2
-  },
-  {
-    "question": "Which element has the chemical symbol 'O'?",
-    "options": ["Gold", "Osmium", "Oxygen", "Oganesson"],
-    "answer": 2
-  },
-  {
-    "question": "In what year did the Titanic sink?",
-    "options": ["1905", "1912", "1920", "1898"],
+    "question": "Quel traité de 843 a partagé l'Empire carolingien entre les trois petits-fils de Charlemagne ?",
+    "options": ["Traité de Meerssen", "Traité de Verdun", "Traité de Coulaines", "Traité de Ribémont"],
     "answer": 1
   },
   {
-    "question": "What is the largest ocean on Earth?",
-    "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+    "question": "Quelle dynastie a succédé aux Carolingiens en 987 avec l'élection de Hugues Capet ?",
+    "options": ["Les Valois", "Les Capétiens", "Les Mérovingiens", "Les Plantagenêts"],
+    "answer": 1
+  },
+  {
+    "question": "Lors de quelle bataille de 1214 Philippe Auguste a-t-il écrasé la coalition formée par Jean sans Terre et Otton IV ?",
+    "options": ["Taillebourg", "Muret", "Bouvines", "Crécy"],
+    "answer": 2
+  },
+  {
+    "question": "Quel pape a lancé la Première Croisade en 1095 au Concile de Clermont ?",
+    "options": ["Grégoire VII", "Pascal II", "Urbain II", "Innocent III"],
+    "answer": 2
+  },
+  {
+    "question": "Quel roi de France a été capturé par les Anglais à la bataille de Poitiers en 1356 ?",
+    "options": ["Philippe VI", "Jean II le Bon", "Charles V", "Charles VI"],
+    "answer": 1
+  },
+  {
+    "question": "Quel massacre de protestants, ordonné dans la nuit du 23 au 24 août 1572, porte le nom d'un saint ?",
+    "options": ["La Saint-Michel", "La Saint-Barthélemy", "La Saint-André", "La Saint-Denis"],
+    "answer": 1
+  },
+  {
+    "question": "Quel ministre de Louis XIII a fondé l'Académie française en 1635 ?",
+    "options": ["Mazarin", "Colbert", "Sully", "Richelieu"],
     "answer": 3
   },
   {
-    "question": "Which language has the most native speakers?",
-    "options": ["English", "Spanish", "Mandarin Chinese", "Hindi"],
-    "answer": 2
-  },
-  {
-    "question": "What gas do plants absorb from the atmosphere?",
-    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Helium"],
-    "answer": 2
-  },
-  {
-    "question": "Who wrote Romeo and Juliet?",
-    "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+    "question": "Quel consul romain a vaincu Hannibal à la bataille de Zama en 202 av. J.-C. ?",
+    "options": ["Fabius Maximus", "Scipion l'Africain", "Paul-Émile", "Marcellus"],
     "answer": 1
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel empereur romain a promulgué l'édit de Milan en 313, légalisant le christianisme ?",
+    "options": ["Théodose", "Dioclétien", "Constantin", "Julien"],
+    "answer": 2
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quelle révolte paysanne a secoué le nord de la France en 1358 ?",
+    "options": ["La Praguerie", "La Jacquerie", "Les Tuchins", "Les Croquants"],
+    "answer": 1
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel maréchal de Napoléon, surnommé « le Brave des Braves », a été fusillé après les Cent-Jours ?",
+    "options": ["Murat", "Davout", "Ney", "Lannes"],
+    "answer": 2
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel fleuve l'armée napoléonienne a-t-elle traversé dans des conditions catastrophiques lors de la retraite de Russie en 1812 ?",
+    "options": ["Le Dniepr", "Le Niémen", "La Bérézina", "La Vistule"],
+    "answer": 2
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel homme d'État a dirigé le Comité de salut public pendant la Terreur en 1793-1794 ?",
+    "options": ["Danton", "Marat", "Robespierre", "Saint-Just"],
+    "answer": 2
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel article de la Constitution de 1958 permet au président de prendre les pleins pouvoirs en cas de crise grave ?",
+    "options": ["Article 11", "Article 16", "Article 49-3", "Article 89"],
+    "answer": 1
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "En quelle année la loi de séparation des Églises et de l'État a-t-elle été votée ?",
+    "options": ["1901", "1905", "1907", "1911"],
+    "answer": 1
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel président de la République a été assassiné par Paul Gorgulov en 1932 ?",
+    "options": ["Aristide Briand", "Paul Doumer", "Gaston Doumergue", "Alexandre Millerand"],
+    "answer": 1
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel général romain, vainqueur en Gaule, a été assassiné aux Ides de mars 44 av. J.-C. ?",
+    "options": ["Pompée", "Crassus", "Jules César", "Brutus"],
+    "answer": 2
   },
   {
-    "question": "What is the speed of light approximately?",
-    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
-    "answer": 0
+    "question": "Quel empereur romain a divisé l'administration de l'Empire en créant la Tétrarchie en 293 ?",
+    "options": ["Constantin", "Dioclétien", "Aurélien", "Gallien"],
+    "answer": 1
+  },
+  {
+    "question": "Quel traité signé en 1763 a mis fin à la guerre de Sept Ans et coûté à la France le Canada et l'Inde ?",
+    "options": ["Traité d'Utrecht", "Traité de Paris", "Traité de Westphalie", "Traité d'Aix-la-Chapelle"],
+    "answer": 1
+  },
+  {
+    "question": "Lors de la bataille d'Austerlitz, quelle manœuvre de Napoléon a consisté à affaiblir volontairement son aile droite pour attirer l'ennemi ?",
+    "options": ["Le plateau de Pratzen", "La percée du centre", "Le piège du flanc sud", "L'abandon du plateau de Pratzen"],
+    "answer": 3
+  },
+  {
+    "question": "Quel événement du 13 mai 1958 à Alger a directement provoqué la chute de la IVe République ?",
+    "options": ["La bataille d'Alger", "Les barricades d'Alger", "Le putsch du 13 mai", "Le putsch des généraux"],
+    "answer": 2
+  },
+  {
+    "question": "Quel roi wisigoth a infligé le sac de Rome en 410 apr. J.-C., un choc pour tout l'Empire ?",
+    "options": ["Attila", "Alaric Ier", "Genséric", "Odoacre"],
+    "answer": 1
+  },
+  {
+    "question": "Quel connétable de France, tombé en disgrâce sous François Ier, a trahi la couronne et mené le sac de Rome en 1527 ?",
+    "options": ["Anne de Montmorency", "Charles de Bourbon", "Bertrand du Guesclin", "Arthur de Richemont"],
+    "answer": 1
   }
-
 ]
